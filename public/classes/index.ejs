@@ -1,13 +1,18 @@
-<h3>Class assignments</h3>
+<ul class="breadcrumbs">
+	<li><a href="../index.html">Home</a></li>
+	<li class="current"><a href="./index.html">Classes</a></li>
+</ul>
 
-<p>In this page I'll link the pages documenting my class assignments progress.
+<h1>Class assignments</h1>
+
+<p class="text-center">In this page you can find my progress with class assignments.</p>
 
 <ul class="classes">
 <% items = public.classes._data.items %>
 <% for (i in items) { %>
     <% pair = items[i]; title = pair[0]; slug = pair[1]; date = pair[2] || "na" %>
     <% if (slug.length > 0) { %>
- <li><a href="/classes/<%= slug %>.html"><span class="label"><%= date %></span><%= title %></a></li>
+ <li><a href="./<%= slug %>.html"><span class="label"><%= date %></span><%= title %></a></li>
      <% } else { %>
    <li><span class="label"><%= date %></span><%= title %></li>      
    <% } %>

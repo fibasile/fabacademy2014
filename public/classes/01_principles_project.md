@@ -1,3 +1,9 @@
+<ul class="breadcrumbs">
+	<li><a href="../index.html">Home</a></li>
+	<li><a href="./index.html">Classes</a></li>
+    <li>Week 1</li>
+</ul>
+
 # Principles and practices, Project management
 
 
@@ -73,6 +79,12 @@ I will manage the projects using the [Trello](http://trello.com) platform, which
 The overall progress will be defined by a checklist, where I will assign myself deadlines for keeping up with assignment schedule.
 
 The material contained in the Trello projects will be used to produce the assignment documentation during each week. 
+
+<ul class="small-block-grid-2">
+   <li><img src="../images/week01/trello_1.jpg" alt="trello overall management"></li>
+   <li><img src="../images/week01/trello_2.jpg" alt="trello task management"></li>
+</ul> 
+
 
 Additionally, for the final project, I plan to keep an [activity log](../project/log.html), which will help me monitor the progress done during the development, and an overall [schedule](../project/gantt.html) where I will keep important milestones stating the major project phases and link results achieved so far, taking into account that I will probably work on several milestones in parallel.
 

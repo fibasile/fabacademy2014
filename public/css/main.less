@@ -10,20 +10,39 @@ body {
 
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  background: #fefefe;
+  background: #fafdff;
   margin: 0px;
   padding: 0px;
   color: #555555;
   text-rendering: optimizeLegibility;
   min-width: 320px;
+
+}
+h1,h2,h3,h4,h5,h6 {
+	font-family: "Oswald", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-weight: 400;
 }
 
+.top-bar-section ul li>a{
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+ 
+}
 .sidebar {
-	border-right: 1px solid #dedede;
+	// border-right: 1px solid #dedede;
 	padding-right: 40px;
-	text-align: right;
+	text-align: center;
+
 }
 
+ul.breadcrumbs {
+	background: none;
+	border:none;
+	border-bottom: 1px solid #dedede;
+}
+
+ul.breadcrumbs li{
+	font-size: 0.9em;
+}
 
 .fablogos {
 	
@@ -31,12 +50,16 @@ body {
 	
 }
 
+h1 {
+	text-align: center;
+}
+
 .logo img {
-	width: 100px;
-	height: 100px;
-	border-radius: 50px;
-	-webkit-border-radius: 50px;
-	-moz-border-radius: 50px;
+	width: 64px;
+	height: 64px;
+	border-radius: 32px;
+	-webkit-border-radius: 32px;
+	-moz-border-radius: 32px;
 }
 
 .size-48 {
@@ -56,4 +79,12 @@ body {
 
 .classes li a:hover {
 	color: orange;
+}
+
+.schedule li {
+	list-style: none;
+}
+
+.license {
+	font-size: .7em;
 }

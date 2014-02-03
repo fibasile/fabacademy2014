@@ -1,3 +1,8 @@
+<ul class="breadcrumbs">
+	<li><a href="../index.html">Home</a></li>
+	<li><a href="./index.html">Final project</a></li>
+	<li class="current"><a href="./description.html">Description</a></li>
+</ul>
 
 #Project description
 
@@ -11,7 +16,7 @@ Today smartphones and tablets, along with the traditional PCs are the most commo
 
 In my opinion this won’t last long, as humans still prefer to interact with other people, and in the future will seek more personal interaction paradigms, using less intrusive means of communicating, such as voice, touch, and other senses.
 
-A proof of such tendency is the basis of services like Siri and Google Voice. While these services reached a quite advanced level of technological perfection, the fact of having to communicate with them using the phone, relying on cloud services for storing personal information, limits their potential in several ways.
+A proof of such tendency is the basis of services like Siri and Google Now. While these services reached a quite advanced level of technological perfection, the fact of having to communicate with them using the phone, relying on cloud services for storing personal information, limits their potential in several ways.
 
 In this context I envision that the role of personal digital companions, small peripherals populating our physical world, and bridging it with the digital universe, will be of great importance. Being private, these devices could have access to our data, preferences, contacts while maintaining a good privacy level. At the same time they could use all the technology potential with a more intimate interface, sharing the same environment where the user lives.
 

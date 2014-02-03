@@ -1,15 +1,16 @@
+#Welcome
 
-    
-# Welcome to my page
+This is the page of Fiore Basile. I'm a software developer, creative and entrepreneur. 
 
-I'm following the Fab Academy 2014 program at the beautiful [Beach Lab](http://fablabsitges.org) in Sitges, Catalunya.
+During the last years the desire to build my own physical goods led me to discover the network
+of Fab Labs. Since then I have strong interest in digital fabrication and its implications on society.
 
-I'm also founder of the [Fab Lab Cascina](http://fablabcascina.org), opening in February 2014 few kilometers from Pisa, Italy. 
+For these reasons, I'm following the Fab Academy 2014 program at the beautiful [Beach Lab](http://fablabsitges.org) in Sitges, Catalunya and
+founded the [Fab Lab Cascina](http://fablabcascina.org), just opened few kilometers from Pisa, Italy. 
 
-Please follow the links on the top menu if you want to learn more about me, my project and the study log.
+Please follow the links on the top menu if you want to learn more about me, my project and the study log. Thanks for visiting!
 
-You will find more content as I update the site during the course.
-
-Thank you for your interest!
-
-
+###Updates
+<div class="updates">
+<span class="label">02 Feb 2014</span> Website online, added [personal profile](./about.html) page and [final project description](./project/index.html).
+</div>
