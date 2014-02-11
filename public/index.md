@@ -12,5 +12,9 @@ Please follow the links on the top menu if you want to learn more about me, my p
 
 ###Updates
 <div class="updates">
+<span class="label">11 Feb 2014</span> Added [3D models](./classes/02_cad.html) for the final project. Updated project [schedule](./project/gantt.html)
+</div>
+
+<div class="updates">
 <span class="label">02 Feb 2014</span> Website online, added [personal profile](./about.html) page and [final project description](./project/index.html).
 </div>

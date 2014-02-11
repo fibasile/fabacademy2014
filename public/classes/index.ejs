@@ -10,9 +10,9 @@
 <ul class="classes">
 <% items = public.classes._data.items %>
 <% for (i in items) { %>
-    <% pair = items[i]; title = pair[0]; slug = pair[1]; date = pair[2] || "na" %>
+    <% pair = items[i]; title = pair[0]; slug = pair[1]; date = pair[2] || "na" ; done = pair[3] || false%>
     <% if (slug.length > 0) { %>
- <li><a href="./<%= slug %>.html"><span class="label"><%= date %></span><%= title %></a></li>
+ <li><a href="./<%= slug %>.html"><span class="label <% if (done) { %> success <% } %>"><%= date %></span><%= title %></a></li>
      <% } else { %>
    <li><span class="label"><%= date %></span><%= title %></li>      
    <% } %>
