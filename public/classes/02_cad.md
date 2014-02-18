@@ -30,7 +30,7 @@ Aside from that I concentrated my time on using and understanding [Inkscape](htt
 
 ###An Inkscape extension
 
-The display I plan to use for the project has only a two color screen, and images can be loaded into it as a bitmap of 128x64, represented as an array of bytes. This is good for the low memory usage of the microcontroller, but it makes quite difficult to create such images, especially from a non technical person.
+The display I plan to use for the project has only a two color screen, and images can be loaded into it as a bitmap of 128x64, represented as an array of bytes. This is good for the low memory usage of the microcontroller, but it makes quite difficult to create such images, especially by a non technical person.
 
 <div class="text-center" style="margin-bottom:20px;">
     <a class="th"><img src="../images/week02/eink.jpg"></a>
@@ -68,7 +68,7 @@ Even if I didn't have the opportunity, mostly because of lack of time, to dig mo
 ###3D Modeling
 
 
-During the first assignment I had modeled a concept for my project using Modo, a quite advanced commercial software package I have used for some game development projects. The modeling approach I usually follow when using this package is called box-modeling: you start roughing up the shape you desire to achieve using cubes and other square shapes, then use the polygon subdivision features provided by the software to produce a smoother and more detailed version of the model, possibly making use of the "sculpting" tools.
+During the first assignment I had modeled a concept for my project using Modo, a quite advanced commercial software package I have used in the past for some game development projects. The modeling approach I usually follow when using this package is called box-modeling: you start roughing up the shape you desire to achieve using cubes and other square shapes, then use the polygon subdivision features provided by the software to produce a smoother and more detailed version of the model, possibly making use of the "sculpting" tools.
 This approach works well for organic shapes, advanced texturing and static rendering, but often needs an additional step, basically redoing topology using only square polygons for creating low-poly versions suitable for realtime rendering.
 
 <div class="text-center" style="margin-bottom:20px;">
@@ -96,7 +96,7 @@ Watching few tutorials explaining the main tools allowed me to progress even fur
 
 The software packages I tried for creating a configurable version of the digital companion were [Kokopelli](http://kokompe.cba.mit.edu) and [OpenSCAD](http://www.openscad.org).
 
-Kokopelli, even if I have years of experience in python programming, proved to be quite a challenge when doing 3D modeling of my concept. I understand the power of the provided API but got frustrated by the lack of ready to use shapes apart the basic ones. One severe limitation in my opinion is the lack of an API for creating meshes out of polygons or triangles. I understand this is probably due to the more 2D inclination of the software, but this got me to move on to a different tool for this task. But I plan to get back for a second test for the CNC projects.
+Kokopelli, even if I have years of experience in Python programming, proved to be quite a challenge when doing 3D modeling of my concept. I understand the power of the provided API but got frustrated by the lack of ready to use shapes apart the basic ones. One severe limitation in my opinion is the lack of an API for creating meshes out of polygons or triangles. I understand this is probably due to the more 2D inclination of the software, but this got me to move on to a different tool for this task. But I plan to get back for a second test for the CNC projects.
 
 I managed then to build a basic version of my concept using OpenSCAD. I used only one extra function from the MCad add-on library to make rounded cubes, relying on the core language for the rest and found it quite intuitive. Being able to build shapes using triangles was a real plus.
 Using variables for most values I thought could be changed, and trying to compute the others in relation to those made it easy to create a parametric model.

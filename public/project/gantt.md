@@ -10,7 +10,7 @@
     <ul>
         <li><span class="label success">M01</span> Project concept defined</li>
         <li><span class="label success">M02</span> Case design</li>
-        <li><span class="label secondary">M03</span>  Camera movement and input</li>
+        <li><span class="label">M03</span>  Camera movement and input</li>
         <li><span class="label secondary">M04</span>  Camera API</li>
         <li><span class="label secondary">M05</span>  Touch input sensors</li>
         <li><span class="label secondary">M06</span>  Touch API</li>

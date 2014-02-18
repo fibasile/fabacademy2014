@@ -1,0 +1,708 @@
+from koko.lib.shapes import *
+import math
+import copy
+from math import log, ceil
+import string
+
+class DashboardGlobals:
+      square_size = 3
+      slot_width = .4
+      peg_width = .55
+      slot_height = .4
+      champher = .2
+      pole_width = .6
+      pole_height = pole_width*2.5
+      material_height = .22
+      text_height = slot_height*0.65
+      padding = .8
+
+
+class DashboardShape:
+
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+
+    def render(self):
+        raise "Not implemented"
+
+
+
+
+
+class DashboardMatrix(DashboardShape):
+    
+    def __init__(self,x,y,rows,cols):
+        DashboardShape.__init__(self,x,y)
+        self.rows = rows
+        self.cols = cols
+        self.square_size = DashboardGlobals.square_size
+        
+    def render(self):
+        x1=self.x+self.cols*self.square_size
+        y1=self.y+self.rows*self.square_size
+        shape = rectangle(self.x, x1, self.y, y1)
+        return shape
+
+    def width(self):
+        return self.cols * DashboardGlobals.square_size
+
+    def height(self):
+        return self.rows * DashboardGlobals.square_size
+
+    def center(self):
+        return (self.x + self.width()/2.0, self.y + self.height()/2.0)
+
+
+
+class DashboardJoint(DashboardShape):
+       
+      def __init__(self,x,y,is_slot):
+          DashboardShape.__init__(self,x,y)
+          self.slot_width = DashboardGlobals.slot_width
+          self.peg_width = DashboardGlobals.peg_width
+          self.slot_height = DashboardGlobals.slot_height
+          self.champher = DashboardGlobals.champher
+          self.rotation = 0
+          self.is_slot = is_slot
+
+      def render(self):
+          if not self.is_slot:
+            return tab(self.x,self.y,self.peg_width, self.slot_height, self.rotation, self.champher)
+          return slot(self.x,self.y,self.slot_width, self.slot_height, self.rotation, self.champher)
+
+
+class DashboardWidget(DashboardMatrix):
+
+
+      def __init__(self,x,y,rows=1,cols=1):
+          DashboardMatrix.__init__(self,x,y,rows,cols)
+          self.show_accessories = False
+          self.hide_joints = False
+          self.label = None
+          self.label_position = "top"
+ 
+      def top_slot(self,col):
+          return False
+          
+      def bottom_slot(self,col):
+          return True
+
+      def left_slot(self,row):
+          return False
+
+      def right_slot(self,row):
+          return True
+
+      def top_peg(self,col):
+          return True
+
+      def bottom_peg(self,col):
+          return False
+
+      def left_peg(self,row):
+          return True
+
+      def right_peg(self,row):
+          return False
+
+
+      def accessories(self):
+          return None
+          
+      def accessories_width(self):
+          return 0
+          
+      def render_label(self):
+          from koko.lib.text import text
+          text_height = DashboardGlobals.text_height
+          text_x = self.width()/2.0
+          if self.label_position=="top":
+              text_y = self.height() - DashboardGlobals.slot_height*1.1
+          else:
+              text_y = text_height/2.0 + DashboardGlobals.slot_height*1.1
+              
+          ts = text(self.label.upper(), text_x, text_y, text_height)
+          return move(ts,self.x,self.y)
+
+      def render(self):
+          sh = DashboardMatrix.render(self)
+          l= None
+          if self.show_accessories:
+             acc = self.accessories()
+             if acc:
+                sh += acc
+          if self.label:
+             l= self.render_label()
+             sh -= l
+          if self.hide_joints:
+             return sh
+          for i in range(0,self.cols):
+                if self.top_slot(i) or self.top_peg(i):
+                    is_slot = self.top_slot(i)
+
+                    slot = DashboardJoint(self.x,self.y , is_slot )
+                    piece = move(slot.render(), self.square_size/2.0 + (i)*self.square_size, (self.rows)*self.square_size*0.9999)
+                    if is_slot: sh-=piece
+                    else: sh+=piece
+                if self.bottom_slot(i) or self.bottom_peg(i):
+                    is_slot = self.bottom_slot(i)
+                    slot = DashboardJoint(self.x,self.y,is_slot)
+                    slot.rotation = 180
+                    piece = move(slot.render(), self.square_size/2.0 + (i)*self.square_size, 0)
+                    if is_slot: sh-=piece
+                    else: sh+=piece
+          for j in range(0, self.rows):
+                if self.left_slot(j) or self.left_peg(j):
+                    is_slot =  self.left_slot(j) 
+                    slot = DashboardJoint(self.x,self.y, is_slot)
+                    slot.rotation = 90
+                    piece= move(slot.render(),  0 , (j)*self.square_size + self.square_size/2.0)
+                    if is_slot: sh-=piece
+                    else: sh+=piece
+                if self.right_slot(j) or self.right_peg(j):
+                    is_slot = self.right_slot(j)
+                    slot = DashboardJoint(self.x,self.y, is_slot)
+                    slot.rotation = 270
+                    piece= move(slot.render(),  self.square_size*self.cols, (j)*self.square_size + self.square_size/2.0)
+                    if is_slot: sh-=piece
+                    else: sh+=piece
+                    
+          return sh
+
+
+class DashboardKnob(DashboardWidget):
+
+    def __init__(self,x,y,rows=1,cols=1):
+        DashboardWidget.__init__(self,x,y,rows,cols)
+        self.knob_radius = self.width()/4.0
+        self.knob_radius_outer = self.width()/3.5
+ 
+    def accessories(self):
+        center = self.width()/2.0
+        inner_radius = self.knob_radius
+        radius = self.knob_radius_outer
+        pw = DashboardGlobals.pole_width/2.0
+        ph = DashboardGlobals.pole_height/2.0
+        mh = DashboardGlobals.material_height/2.0
+        c = circle(center, center, radius)
+        ic = circle(center,center,inner_radius)
+        pole = rectangle(center-pw,center+pw,center-ph, center+ph)
+        hole = rectangle(center-pw*.95,center+pw*.95, center-mh,center+mh)
+        c-=hole
+        ic-=hole
+        return move(ic,self.x+self.width()*0.85,self.y) + move(c,self.x+self.width()*1.5,self.y) + move(pole,self.x+self.width()*1.95, self.y)
+
+    def accessories_width(self):
+        return self.width()*1.6
+
+    def render(self):
+        res = DashboardWidget.render(self)
+        c = circle(self.x+self.width()/2.0, self.y+self.height()/2.0, self.width()/4.0)
+        return res - c
+
+
+class DashboardSpeaker(DashboardWidget):
+
+    def __init__(self,x,y,rows=2,cols=2):
+        DashboardWidget.__init__(self,x,y,rows,cols)
+
+
+    def render(self):
+        res = DashboardWidget.render(self)
+        bw = self.width()
+        bh = self.height()
+        dw = (bw - bw*0.90) 
+        dh = (bh - bh*0.90)
+        radius = (bw*0.80)/20
+        for i in range(1,10):
+            for j in range(1,10):
+                if (i%2==0 and j%2==1) or (i%2==1 and j%2==0):
+                    res-=move(circle(0, 0 ,radius*0.9),self.x+dw+i*2*radius,self.y+dh+j*2*radius)
+
+        return res
+
+
+class DashboardDisplay(DashboardWidget):
+
+    def __init__(self,x,y,rows=2,cols=3):
+        DashboardWidget.__init__(self,x,y,rows,cols)
+        self.display_width = self.width()*0.8
+        self.display_height = self.height()*0.6
+
+    def render(self):
+        res = DashboardWidget.render(self)
+        bw = self.width()
+        bh = self.height()
+
+        dw = (bw - self.display_width) /2.0
+        dh = (bh - self.display_height) /2.0
+        res-=move(rectangle(dw,bw-dw,dh,bh-dh),self.x,self.y)
+        return res
+
+        
+class DashboardSlider(DashboardWidget):
+
+    def __init__(self,x,y,rows=1,cols=3):
+        DashboardWidget.__init__(self,x,y,rows,cols)
+        self.bounds_w = self.width()
+        self.bounds_h = self.height()
+        self.slider_width = self.bounds_w*0.8
+        self.slider_height = self.bounds_h/4.0
+
+
+    def accessories(self):
+        pw = DashboardGlobals.pole_width/2.0
+        ph = DashboardGlobals.pole_height/2.0
+        mh = DashboardGlobals.material_height /2.0
+        pole = rectangle(0,pw*2, 0, ph*2)
+        margin = DashboardGlobals.square_size * 0.1
+        knob_width = self.slider_width/4
+        knob_bottom_height = self.slider_height
+        knob_top_height = self.slider_height*1.2
+
+        knob_bottom = rectangle(-knob_width/2.0, knob_width/2.0, -knob_bottom_height/2.0,knob_bottom_height/2.0 )
+        pole_hole = rectangle(-pw*0.95, pw*0.95, -mh,mh)
+        knob_bottom -= pole_hole
+        knob_top = rectangle(-knob_width/2.0, knob_width/2.0, -knob_top_height/2.0,knob_top_height/2.0 )
+        knob_top -= pole_hole
+
+        res = move(knob_bottom,self.x+self.width()+knob_width+2*margin,self.y+knob_bottom_height)
+        res += move(pole,self.x+self.width()+pw+margin,self.y+ph) 
+        res += move(knob_top, self.x+self.width()+knob_width+2*margin,self.y+2*knob_top_height)
+        return res
+
+    def accessories_width(self):
+        return self.width()/4 + DashboardGlobals.pole_width + DashboardGlobals.square_size * 0.5
+        
+        
+    def render(self):
+        res = DashboardWidget.render(self)
+        bw = self.bounds_w
+        bh = self.bounds_h
+        dw = (bw - self.slider_width) /2.0
+        dh = (bh - self.slider_height) /2.0
+        res-=move(rectangle(dw,bw-dw,dh,bh-dh),self.x,self.y)
+        return res
+
+
+class DashboardButton(DashboardWidget):
+
+    def __init__(self,x,y,rows=1,cols=1):
+        DashboardWidget.__init__(self,x,y,rows,cols)
+        self.bounds_w = self.width()
+        self.bounds_h = self.height()
+        self.content_width = self.bounds_w*0.5
+        self.content_height = self.bounds_h*0.5
+
+    def accessories(self):
+        pw = DashboardGlobals.pole_width/2.0
+        ph = DashboardGlobals.pole_height/2.0
+        mh = DashboardGlobals.material_height/2.0
+ 
+        pole = rectangle(0,pw*2, 0, ph*2)
+        margin = DashboardGlobals.square_size * 0.05
+
+        knob_bottom_width = self.content_width
+        knob_bottom_height = self.content_height
+
+        knob_top_width = self.content_width*1.2
+        knob_top_height = self.content_height*1.2
+
+        knob_bottom = rectangle(-knob_bottom_width/2.0, knob_bottom_width/2.0, -knob_bottom_height/2.0,knob_bottom_height/2.0 )
+        pole_hole = rectangle(-pw*0.95, pw*0.95, -mh,mh)
+        knob_bottom -= pole_hole
+        knob_top = rectangle(-knob_top_width/2.0, knob_top_width/2.0, -knob_top_height/2.0,knob_top_height/2.0 )
+        knob_top -= pole_hole
+
+        #pole = rectangle(-pw,pw, ph,ph)
+        #hole = rectangle(-pw,pw, mh,mh)
+        #knob-=hole
+
+        res = move(knob_bottom,self.x+self.width()+margin+knob_bottom_width,self.y+self.height()/2.0)
+        res += move(pole,self.x+self.width()+margin,self.y+self.height()/2.0-ph) 
+        res += move(knob_top, self.x+self.width()+margin+knob_bottom_width+knob_top_width,self.y+self.height()/2.0)
+        return res
+        
+    def accessories_width(self):
+        return 3*self.content_width 
+    
+    def render(self):
+        res = DashboardWidget.render(self)
+        bw = self.bounds_w
+        bh = self.bounds_h
+        dw = (bw - self.content_width) /2.0
+        dh = (bh - self.content_height) /2.0
+        res-=move(rectangle(dw,bw-dw,dh,bh-dh),self.x,self.y)
+        return res
+
+
+class DashboardDial(DashboardKnob):
+
+
+    def __init__(self,x,y,rows=2,cols=2):
+        DashboardKnob.__init__(self,x,y,rows,cols)
+        self.scale = 12
+        self.scale_radius = self.width() * 0.02
+        self.scale_distance = self.knob_radius_outer *1.3
+
+    def render(self):
+        res = DashboardKnob.render(self)
+        center_x,center_y = self.center()
+        for i in range(0,self.scale):
+            angle = i * (math.pi*2) /self.scale
+            res -= circle(center_x + (self.scale_distance)*math.cos(angle) , center_y + (self.scale_distance)*math.sin(angle), self.scale_radius)
+        return res
+
+
+class DashboardButtonMatrix(DashboardMatrix):
+
+    def __init__(self,x,y,rows,cols):
+        DashboardMatrix.__init__(self,x,y,rows,cols)
+        self.buttons = []
+        self.hide_joints = False
+        self.label = ''
+        for col in range(0,self.cols):
+            for row in range(0,self.rows):
+                pos_x = self.x + self.square_size*col
+                pos_y = self.y + self.square_size*row
+                self.buttons.append(DashboardButton(pos_x,pos_y))
+
+    def accessories(self):
+        return None
+
+    def render(self):
+        res = rectangle(0,0,0,0)
+        for b in self.buttons:
+            b.hide_joints = self.hide_joints
+            b.label = self.label
+            res+=b.render()
+        return res
+
+
+class DashboardRender:
+
+    def __init__(self, shape_list):
+        self.shapes = shape_list
+        self.preview = False
+        self.sqs= DashboardGlobals.square_size
+        self._shapes = []
+        self.class_mapping = {
+            'button'  : DashboardButton,
+            'display' : DashboardDisplay,
+            #'button_matrix' : DashboardButtonMatrix,
+            'widget' : DashboardWidget,
+            'speaker' : DashboardSpeaker,
+            'knob' : DashboardKnob,
+            'dial' : DashboardDial,
+            'slider' : DashboardSlider
+        }
+        
+        
+        
+    def get_class(self,t):
+        return self.class_mapping[t]
+        
+    def build_shape(self,d):
+        shape_type = d['type']
+        shape_rows =  d.has_key('rows') and d['rows'] or None 
+        shape_cols = d.has_key('cols') and d['cols'] or None
+        shape_x = d['pos_x']
+        shape_y = d['pos_y']
+        shape_label = d.has_key('label') and d['label'] or None
+        shape_label_pos = d.has_key('label_pos') and d['label_pos'] or None
+        shape_class = self.get_class(shape_type)
+        s = None
+        if shape_rows:
+            s = shape_class(self.sqs*shape_x,self.sqs*shape_y,shape_rows,shape_cols)
+        else:
+            s = shape_class(self.sqs*shape_x,self.sqs*shape_y)
+        s.label = shape_label
+        if shape_label_pos:
+            s.label_position = shape_label_pos
+        return s
+        
+
+    def compute_layout(self):
+        self._shapes = []
+        for d in self.shapes:
+            s = self.build_shape(d)
+            if self.preview:
+                s.hide_joints = True
+            
+            self._shapes.append(s.render())
+        
+        
+        
+    def render(self):
+        self.compute_layout()
+        return self._shapes
+        
+
+class DashboardPreviewRender(DashboardRender):
+    
+    def __init__(self,shape_list):
+        DashboardRender.__init__(self,shape_list)
+        self.preview = True
+
+
+class DashboardBoxBorderLeft(DashboardWidget):
+
+      def top_peg(self,col):
+            return False
+
+      def render(self):
+          s = DashboardWidget.render(self)
+          return rotate(s,90)
+
+class DashboardBoxBorderRight(DashboardWidget):
+
+      def top_slot(self,col):
+            return False
+
+      def top_peg(self,col):
+            return False
+
+
+      def bottom_peg(self,col):
+            return True
+
+      def bottom_slot(self,col):
+            return False
+
+      def render(self):
+          s = DashboardWidget.render(self)
+          return rotate(reflect_x(s),-90)
+
+
+class DashboardBoxBorderTop(DashboardWidget):
+
+      def top_slot(self,col):
+            return False
+
+      def top_peg(self,col):
+            return False
+
+      def left_peg(self,row):
+            return False
+
+      def right_slot(self,row):
+            return False
+
+
+
+class DashboardBoxRender(DashboardRender):
+
+    def __init__(self,shape_list,box_height=1,border_width=1):
+        DashboardRender.__init__(self,shape_list)
+        self.max_x = 0 #box inner width
+        self.max_y = 0 #box inner height
+        self.box_height = box_height
+        self.border_width = border_width
+
+    def render(self):
+        self.compute_layout()
+        for shape in self._shapes:
+            if shape.xmax - shape.xmin > self.max_x:
+                self.max_x = shape.xmax
+            if shape.ymax > self.max_y:
+                self.max_y = shape.ymax
+        
+        border_cols = int(ceil(self.max_x / self.sqs)) 
+        border_rows = int(ceil(self.max_y / self.sqs)) 
+
+        print 'border %d x %d' % (border_rows,border_cols)
+        top = DashboardBoxBorderTop(-self.border_width*self.sqs, border_rows*self.sqs, self.border_width, border_cols )
+        left = DashboardBoxBorderLeft(0, 0, self.border_width,border_rows )
+        right = DashboardBoxBorderRight(0, self.max_x, self.border_width,border_rows)
+        return [top.render(), left.render(),right.render()]
+
+
+
+
+
+class PackingNode:
+    def __init__(self, shape, rect=(), children=()):
+        self.rect = rect
+        self.children = children
+        self.shape=shape
+
+    def is_leaf(self):
+        return not self.children
+
+    def is_empty_leaf(self):
+        return (self.is_leaf() and not self.shape)
+    
+    def split_node(self, tshape):
+        if (not self.is_leaf):
+            raise Exception("Attempted to split non-leaf")
+
+        if (not self.rect.can_contain(tshape.m_width, tshape.m_height)):
+            raise Exception("Attempted to place an img in a node it doesn't fit")
+
+        #if it fits exactly then we are done...
+        if (self.rect.is_congruent_with(tshape.m_width, tshape.m_height)):
+            self.shape = tshape
+        else:
+            if (self.rect.should_split_vertically(tshape.m_width, tshape.m_height)):
+                vert_rects = self.rect.split_vert(tshape.m_height)
+                top_child = PackingNode(None, vert_rects[0])
+                bottom_child = PackingNode(None, vert_rects[1])
+                self.children = (top_child, bottom_child)
+            else:
+                horz_rects = self.rect.split_horz(tshape.m_width)
+                left_child = PackingNode(None, horz_rects[0])
+                right_child = PackingNode(None, horz_rects[1])
+                self.children = (left_child, right_child)
+            self.children[0].split_node(tshape)
+                                        
+    def find_empty_leaf(self,node):
+        if (self.is_empty_leaf()):
+            if self.rect.can_contain(node.m_width,node.m_height):
+                return self
+            return ()
+        else:
+            if (self.is_leaf()):
+                return ()
+            else:
+                leaf = self.children[0].find_empty_leaf( node )
+                if (leaf):
+                    return leaf
+                else:
+                    return self.children[1].find_empty_leaf( node )
+                    
+    def render(self):
+        res=[]
+        if (self.is_leaf()):
+            if (self.shape):
+                self.shape.x = self.rect.x
+                self.shape.y = self.rect.y
+                res.append(self.shape)
+        else:
+            for c in self.children[0].render():
+                res.append(c)
+            for c in self.children[1].render():
+                res.append(c)
+        return res
+                
+                
+    
+class PackingRectangle:
+    def __init__(self, x=0, y=0, wd=0, hgt=0):
+        self.x = x
+        self.y = y
+        self.wd = wd
+        self.hgt = hgt
+        
+    def split_vert(self,y):
+        top = PackingRectangle(self.x, self.y, self.wd, y)
+        bottom = PackingRectangle(self.x, self.y+y, self.wd, self.hgt-y)
+        return (top, bottom)
+    
+    def split_horz(self,x):
+        left = PackingRectangle(self.x, self.y, x, self.hgt)
+        right = PackingRectangle(self.x+x, self.y, self.wd-x, self.hgt)
+        return (left,right)
+    
+    def area(self):
+        return self.wd * self.hgt
+    
+    def max_side(self):
+        return max(self.wd, self.hgt)
+    
+    def can_contain(self, wd, hgt):
+        return self.wd >= wd and self.hgt >=hgt
+    
+    def is_congruent_with(self, wd, hgt):
+        return self.wd == wd and self.hgt ==hgt
+    
+    def should_split_vertically(self, wd, hgt):
+        if (self.wd == wd):
+            return True
+        elif (self.hgt == hgt):
+            return False
+        vert_rects = self.split_vert(hgt)
+        horz_rects = self.split_horz(wd)
+        return vert_rects[1].area() > horz_rects[1].area()
+        
+        
+class DashboardCuttingRender(DashboardRender):
+
+    def __init__(self,shape_list,max_width,max_height):
+        DashboardRender.__init__(self,shape_list)
+        self.preview = False
+        self.max_width = max_width
+        self.max_height = max_height
+        self.target_width = max_width
+        self.target_height = max_height
+        self.padding = DashboardGlobals.padding
+
+    def pack_shapes(self,shapes):
+        root=None
+        while shapes:
+            current = shapes.pop()
+            if not root:
+                root = PackingNode((), PackingRectangle(0, 0, self.target_width, self.target_height))
+                root.split_node(current)
+                continue
+            leaf = root.find_empty_leaf(current)
+            if leaf:
+                leaf.split_node(current)
+            else:
+                raise Exception("A %d by %d rectangle cannot fit all" % (self.target_width,self.target_height))
+        return root
+
+    def compute_layout(self):
+        self._shapes = []
+        tmp_shapes=[]
+        for d in self.shapes:
+            s = self.build_shape(d)
+            s.show_accessories=True
+            if s.accessories():
+                s.area = (self.padding + s.height())*(s.width()+ s.accessories_width() + self.padding)
+                s.m_width = s.width()+ s.accessories_width() + self.padding
+            else:
+                s.area = (self.padding + s.height()) * (self.padding + s.width())
+                s.m_width = s.width()+ self.padding
+            s.m_height = s.height()+ self.padding
+            tmp_shapes.append(s)
+        tmp_shapes = sorted(tmp_shapes, key=lambda shape: max(shape.m_width,shape.m_height) )
+        tmp_shapes = sorted(tmp_shapes, key=lambda shape: shape.area )
+        root = self.pack_shapes(tmp_shapes)
+        for s in root.render():
+            self._shapes.append(s.render())
+       
+
+
+
+shape_list = [
+    {'type' : 'button', 'pos_x' : 0, 'pos_y' : 0, 'rows':2, 'cols':2, 'label': '','label_pos':'bottom'},
+    {'type' : 'dial', 'pos_x' : 2, 'pos_y' : 0, 'label': '','label_pos':'top' },
+    {'type' : 'slider', 'pos_x' : 0, 'pos_y' : 2, 'label': '','label_pos':'bottom' },
+    {'type' : 'button', 'pos_x' : 3, 'pos_y' : 2, 'label': '','label_pos':'bottom' },
+    {'type' : 'display', 'pos_x' : 0, 'pos_y' : 4, 'label': '','label_pos':'bottom' },
+    {'type' : 'knob', 'pos_x' : 3, 'pos_y' : 4, 'label': '','label_pos':'bottom' },
+    {'type' : 'knob', 'pos_x' : 3, 'pos_y' : 5, 'label': '','label_pos':'bottom' },
+    {'type' : 'speaker', 'pos_x' : 0, 'pos_y' : 6, 'label': '','label_pos':'bottom' },
+    {'type' : 'speaker', 'pos_x' : 2, 'pos_y' : 6, 'label': '','label_pos':'bottom' },
+    {'type' : 'button', 'pos_x' : 0, 'pos_y': 3, 'label' : '', 'label_post': 'top'},
+    {'type' : 'button', 'pos_x' : 1, 'pos_y': 3, 'label' : '', 'label_post': 'top'},
+    {'type' : 'button', 'pos_x' : 2, 'pos_y': 3, 'label' : '', 'label_post': 'top'},
+    {'type' : 'button', 'pos_x' : 3, 'pos_y': 3, 'label' : '', 'label_post': 'top'},
+]
+
+mode = "cutting"
+
+
+cad.mm_per_unit=10
+d=None
+
+
+if mode == "cutting":
+    d = DashboardCuttingRender(shape_list,12*DashboardGlobals.square_size,12*DashboardGlobals.square_size)
+elif mode == "preview":
+    d=DashboardPreviewRender(shape_list)
+elif mode == "box":
+    d=DashboardBoxRender(shape_list)
+
+cad.shapes = d.render()

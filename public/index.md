@@ -11,6 +11,12 @@ founded the [Fab Lab Cascina](http://fablabcascina.org), just opened few kilomet
 Please follow the links on the top menu if you want to learn more about me, my project and the study log. Thanks for visiting!
 
 ###Updates
+
+<div class="updates">
+<span class="label">18 Feb 2014</span> Updated [3D controlled cutting](./classes/03_cutting.html) page. 
+</div>
+
+
 <div class="updates">
 <span class="label">11 Feb 2014</span> Added [3D models](./classes/02_cad.html) for the final project. Updated project [schedule](./project/gantt.html)
 </div>
