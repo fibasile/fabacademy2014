@@ -13,6 +13,10 @@ Please follow the links on the top menu if you want to learn more about me, my p
 ###Updates
 
 <div class="updates">
+<span class="label">25 Feb 2014</span> Updated [Electronics production](./classes/04_electronics_production.html) page. 
+</div>
+
+<div class="updates">
 <span class="label">18 Feb 2014</span> Updated [3D controlled cutting](./classes/03_cutting.html) page. 
 </div>
 

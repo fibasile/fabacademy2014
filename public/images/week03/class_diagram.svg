@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="753px" height="457px" viewBox="0 0 753 457" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>Classes</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#E6FFC9" offset="0%"></stop>
+            <stop stop-color="#9CF351" offset="53.3854167%"></stop>
+            <stop stop-color="#50FF76" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#A9A9A9" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FFDB54" offset="0%"></stop>
+            <stop stop-color="#FF6100" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <rect id="Rectangle-1" stroke="#979797" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup" x="20" y="0" width="120" height="60"></rect>
+        <text id="DashboardGlobals" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="30" y="33">DashboardGlobals</tspan>
+        </text>
+        <rect id="Rectangle-1-copy" stroke="#979797" fill="url(#linearGradient-2)" sketch:type="MSShapeGroup" x="139" y="107" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-2" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="1" y="307" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-3" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="0" y="397" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-3" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="277" y="307" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-2" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="139" y="307" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-2" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="315" y="107" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-2" stroke="#979797" fill="url(#linearGradient-2)" sketch:type="MSShapeGroup" x="228" y="0" width="120" height="60"></rect>
+        <text id="DashboardMatrix" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="153" y="141">DashboardMatrix</tspan>
+        </text>
+        <text id="DashboardJoint" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="333" y="141">DashboardJoint</tspan>
+        </text>
+        <text id="DashboardShape" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="241" y="35">DashboardShape</tspan>
+        </text>
+        <rect id="Rectangle-1-copy-3" stroke="#979797" fill="url(#linearGradient-2)" sketch:type="MSShapeGroup" x="557" y="0" width="120" height="60"></rect>
+        <text id="DashboardRender" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="568" y="35">DashboardRender</tspan>
+        </text>
+        <rect id="Rectangle-1-copy-4" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="477" y="106" width="120" height="60"></rect>
+        <text id="DashboardPreview" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" sketch:alignment="middle" fill="#000000">
+            <tspan x="486.807617" y="133">DashboardPreview</tspan>
+            <tspan x="517.821289" y="147">Render</tspan>
+        </text>
+        <rect id="Rectangle-1-copy-5" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="633" y="106" width="120" height="60"></rect>
+        <text id="DashboardCutting" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" sketch:alignment="middle" fill="#000000">
+            <tspan x="645.136719" y="132">DashboardCutting</tspan>
+            <tspan x="673.821289" y="146">Render</tspan>
+        </text>
+        <rect id="Rectangle-1-copy-2" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="139" y="197" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-3" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="416" y="307" width="120" height="60"></rect>
+        <rect id="Rectangle-1-copy-4" stroke="#979797" fill="url(#linearGradient-3)" sketch:type="MSShapeGroup" x="555" y="307" width="120" height="60"></rect>
+        <text id="DashboardWidget" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="151" y="231">DashboardWidget</tspan>
+        </text>
+        <text id="DashboardKnob" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" sketch:alignment="middle" fill="#000000">
+            <tspan x="17.1347656" y="341">DashboardKnob</tspan>
+        </text>
+        <text id="DashboardDial" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" sketch:alignment="middle" fill="#000000">
+            <tspan x="19.8115234" y="431">DashboardDial</tspan>
+        </text>
+        <text id="DashboardSpeaker" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="147" y="341">DashboardSpeaker</tspan>
+        </text>
+        <text id="DashboardDisplay" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="288" y="341">DashboardDisplay</tspan>
+        </text>
+        <text id="DashboardButton" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="568" y="341">DashboardButton</tspan>
+        </text>
+        <text id="DashboardSlider" sketch:type="MSTextLayer" font-family="Helvetica" font-size="12" font-weight="normal" fill="#000000">
+            <tspan x="431" y="341">DashboardSlider</tspan>
+        </text>
+        <path d="M201.5,172.5 L201.5,196.5" id="Line-copy" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-decoration-1" d="M201.5,196.5 C202.55,192.72 203.45,189.48 204.5,185.7 C202.4,185.7 200.6,185.7 198.5,185.7 C199.55,189.48 200.45,192.72 201.5,196.5 C201.5,196.5 201.5,196.5 201.5,196.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M61.5,367.5 L61.5,391.5" id="Line-copy-2" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-2-decoration-1" d="M61.5,391.5 C62.55,387.72 63.45,384.48 64.5,380.7 C62.4,380.7 60.6,380.7 58.5,380.7 C59.55,384.48 60.45,387.72 61.5,391.5 C61.5,391.5 61.5,391.5 61.5,391.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M62.5,282.5 L62.5,306.5" id="Line-copy-3" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-3-decoration-1" d="M62.5,306.5 C63.55,302.72 64.45,299.48 65.5,295.7 C63.4,295.7 61.6,295.7 59.5,295.7 C60.55,299.48 61.45,302.72 62.5,306.5 C62.5,306.5 62.5,306.5 62.5,306.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M333.5,282.5 L333.5,306.5" id="Line-copy-4" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-4-decoration-1" d="M333.5,306.5 C334.55,302.72 335.45,299.48 336.5,295.7 C334.4,295.7 332.6,295.7 330.5,295.7 C331.55,299.48 332.45,302.72 333.5,306.5 C333.5,306.5 333.5,306.5 333.5,306.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M201.5,81.5 L201.5,105.5" id="Line-copy-5" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-5-decoration-1" d="M201.5,105.5 C202.55,101.72 203.45,98.4800001 204.5,94.7000001 C202.4,94.7 200.6,94.7 198.5,94.6999999 C199.55,98.4799999 200.45,101.72 201.5,105.5 C201.5,105.5 201.5,105.5 201.5,105.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M374.5,81.5 L374.5,105.5" id="Line-copy-6" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-6-decoration-1" d="M374.5,105.5 C375.55,101.72 376.45,98.4800001 377.5,94.7000001 C375.4,94.7 373.6,94.7 371.5,94.6999999 C372.55,98.4799999 373.45,101.72 374.5,105.5 C374.5,105.5 374.5,105.5 374.5,105.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M477.5,282.5 L477.5,306.5" id="Line-copy-5" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-5-decoration-1" d="M477.5,306.5 C478.55,302.72 479.45,299.48 480.5,295.7 C478.4,295.7 476.6,295.7 474.5,295.7 C475.55,299.48 476.45,302.72 477.5,306.5 C477.5,306.5 477.5,306.5 477.5,306.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M617.5,282.5 L617.5,306.5" id="Line-copy-6" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-6-decoration-1" d="M617.5,306.5 C618.55,302.72 619.45,299.48 620.5,295.7 C618.4,295.7 616.6,295.7 614.5,295.7 C615.55,299.48 616.45,302.72 617.5,306.5 C617.5,306.5 617.5,306.5 617.5,306.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M202.5,257.5 L202.5,306.5" id="Line-copy-2" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-2-decoration-1" d="M202.5,306.5 C203.55,302.72 204.45,299.48 205.5,295.7 C203.4,295.7 201.6,295.7 199.5,295.7 C200.55,299.48 201.45,302.72 202.5,306.5 C202.5,306.5 202.5,306.5 202.5,306.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M62.15625,282.59375 L619.188565,282.59375" id="Path-12" stroke="#979797" sketch:type="MSShapeGroup"></path>
+        <path d="M202.269531,82 L375.230469,82" id="Path-11" stroke="#979797" sketch:type="MSShapeGroup"></path>
+        <path d="M290.230469,81.5 L290.230469,57.6184522" id="Path-12" stroke="#979797" sketch:type="MSShapeGroup"></path>
+        <path d="M527.5,81.5 L527.5,105.5" id="Line-copy-6" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-6-decoration-1" d="M527.5,105.5 C528.55,101.72 529.45,98.4800001 530.5,94.7000001 C528.4,94.7 526.6,94.7 524.5,94.6999999 C525.55,98.4799999 526.45,101.72 527.5,105.5 C527.5,105.5 527.5,105.5 527.5,105.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M700.5,81.5 L700.5,105.5" id="Line-copy-7" stroke="#979797" stroke-linecap="square" fill="#000000" sketch:type="MSShapeGroup"></path>
+        <path id="Line-copy-7-decoration-1" d="M700.5,105.5 C701.55,101.72 702.45,98.4800001 703.5,94.7000001 C701.4,94.7 699.6,94.7 697.5,94.6999999 C698.55,98.4799999 699.45,101.72 700.5,105.5 C700.5,105.5 700.5,105.5 700.5,105.5 Z" stroke="#979797" stroke-linecap="square" fill="#000000"></path>
+        <path d="M528.269531,82 L701.230469,82" id="Path-11-copy" stroke="#979797" sketch:type="MSShapeGroup"></path>
+        <path d="M616.230469,81.5 L616.230469,57.6184522" id="Path-12-copy" stroke="#979797" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>

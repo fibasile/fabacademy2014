@@ -2,8 +2,8 @@
     "items": [
         ["principles and practices, project management", "01_principles_project", "29 Jan", "Y"],
         ["computer-aided design","02_cad","5 Feb","Y"],
-        ["computer-controlled cutting","03_cutting","12 Feb"],
-        ["electronics production","","19 Feb"],
+        ["computer-controlled cutting","03_cutting","12 Feb","Y"],
+        ["electronics production","04_electronics_production","19 Feb"],
         ["3D scanning and printing","", "26 Feb"],
         ["electronics design","","5 March"],
         ["computer-controlled machining","","12 March"],
