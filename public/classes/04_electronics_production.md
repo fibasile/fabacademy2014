@@ -108,7 +108,7 @@ The process this time was successful, my ISP was recognized by OSX, and it also 
 Servo Board
 -----------
 
-Having completed the assignment I moved to working on my Final project, by producing a Servo board for managing the camera movement.
+Having completed the assignment I moved to working on my Final project, by producing a [Servo board](http://academy.cba.mit.edu/classes/output_devices/servo/hello.servo.44.png) for managing the camera movement.
 
 I thought this could also be a useful practice for the weeks to come and an interesting way of further using my brand new FabISP.
 
@@ -141,6 +141,30 @@ Conclusion
 
 I enjoyed much this week assignment. Being able to create from scratch a working board and programming it made the process very rewarding.
 I didn't manage to complete the servo board, but will work on it and update the page with my findings later in the week.
+
+
+Update March 4th, 2014
+----------------------
+
+I managed to stuff and program the servo board.
+
+For stuffing the board, I needed to correct my BOM using a Resonator instead of the Crystal, and to use the 1A Voltage regulator instead of the 0.1A one I indicated in the previous bom. 
+
+The updated BOM will now look like the following:
+
+![Servo Bom Fixed](../images/week04/servo_bom_fixed.jpg)
+    
+I was able to savage most of the existing components using and hot air gun. The tool I used it is the [ATTEN AT8502D 2 in 1 Lead free rework station](http://www.atten.eu/solder-rework/atten-at8502d-2-in-1-lead-free-rework-station.html) I purchased for the Fab Lab Cascina.
+The process was very straightforward and required few minutes to complete.
+
+![Desoldering](../images/week04/desoldering.jpg)
+    
+I milled a new servo board and stuffed it following the updated BOM. This time I dedicated more attention in soldering the connectors, which resulted quite solid.
+
+![Stuffed Servo](../images/week04/stuffed_servo.jpg)
+    
+The board will power the pan-tilt mechanism of my Digital Companion, as shown in the [activity log](../project/log.html) using the
+[2 Channels Software PWM Firmware](http://academy.cba.mit.edu/classes/output_devices/servo/hello.servo.44.2.c).
 
 
 

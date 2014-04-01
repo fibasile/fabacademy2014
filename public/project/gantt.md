@@ -10,8 +10,8 @@
     <ul>
         <li><span class="label success">M01</span> Project concept defined</li>
         <li><span class="label success">M02</span> Case design</li>
-        <li><span class="label">M03</span>  Camera movement and input</li>
-        <li><span class="label secondary">M04</span>  Camera API</li>
+        <li><span class="label alert">M03</span>  Camera movement and input</li>
+        <li><span class="label alert">M04</span>  Camera API</li>
         <li><span class="label secondary">M05</span>  Touch input sensors</li>
         <li><span class="label secondary">M06</span>  Touch API</li>
         <li><span class="label secondary">M07</span>  E-Ink Display</li>
@@ -20,7 +20,7 @@
         <li><span class="label secondary">M10</span>  Sound API</li>
         <li><span class="label secondary">M11</span>  Ultrasonic sensor</li>
         <li><span class="label secondary">M12</span>  Sensing API</li>
-        <li><span class="label secondary">M13</span>  Custom controller board</li>
+        <li><span class="label">M13</span>  Custom controller board</li>
         <li><span class="label secondary">M14</span>  Complete Controller Firmware</li>
         <li><span class="label secondary">M15</span>  API Examples and Development manual</li>
     </ul>

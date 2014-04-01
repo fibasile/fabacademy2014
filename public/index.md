@@ -13,18 +13,30 @@ Please follow the links on the top menu if you want to learn more about me, my p
 ###Updates
 
 <div class="updates">
-<span class="label">25 Feb 2014</span> Updated [Electronics production](./classes/04_electronics_production.html) page. 
+    <span class="label">01 Apr 2014</span> Updated [Embedded programming](./classes/08_embedded_programming.html) and [Molding and casting](./classes/09_molding_casting.html) pages.
+
+<div class="updates">
+    <span class="label">12 Mar 2014</span> Updated [Electronics production](./classes/04_electronics_production.html) page and
+    [Electronics design](./classes/06_electronics_design.html) page.
 </div>
 
 <div class="updates">
-<span class="label">18 Feb 2014</span> Updated [3D controlled cutting](./classes/03_cutting.html) page. 
+    <span class="label">04 Mar 2014</span> Updated [3D Scanning and printing](./classes/05_3dscanning_printing.html) page.
+</div>
+
+<div class="updates">
+    <span class="label">25 Feb 2014</span> Updated [Electronics production](./classes/04_electronics_production.html) page. 
+</div>
+
+<div class="updates">
+    <span class="label">18 Feb 2014</span> Updated [3D controlled cutting](./classes/03_cutting.html) page. 
 </div>
 
 
 <div class="updates">
-<span class="label">11 Feb 2014</span> Added [3D models](./classes/02_cad.html) for the final project. Updated project [schedule](./project/gantt.html)
+    <span class="label">11 Feb 2014</span> Added [3D models](./classes/02_cad.html) for the final project. Updated project [schedule](./project/gantt.html)
 </div>
 
 <div class="updates">
-<span class="label">02 Feb 2014</span> Website online, added [personal profile](./about.html) page and [final project description](./project/index.html).
+    <span class="label">02 Feb 2014</span> Website online, added [personal profile](./about.html) page and [final project description](./project/index.html).
 </div>

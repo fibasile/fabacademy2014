@@ -7,6 +7,54 @@
 
 #Activity Log
 
+<span class="label">21 March 2014</span>
+
+Progress on the project has slowed down, as I encountered a significant bottleneck on the serial camera throughput.
+
+I tested the camera on an Arduino Leonardo using the code provided by [Sparkfun](https://www.sparkfun.com/products/retired/10061).
+
+The result was quite poor in terms of frames per second, as I could take a picture in just 6 seconds! This result is not really useful
+for my project goals, as I was planning to offer the possibility to use the companion video for computer vision, web conferencing and 
+other mundane tasks.
+
+The final conclusion is that while keeping the original architecture for my project, I will turn to more powerful hardware as the main
+controller board. I'm currently looking for alternatives such as the Raspberry PI or Arduino YUN to achieve this goal.
+
+Also, I think that switching to such kind of board will significantly reduce the cost of the overall solution, as a very cheap USB camera
+would be now usable. I'll write more as I weight the different possibilities.
+
+
+<span class="label">4 March 2014</span>
+<br/>
+I completed the Servo control board and programmed it with the two Channel software PWM. I could finally move one and try it with actual servo motors to see if it worked.
+
+![Stuffed Servo](../images/week04/stuffed_servo.jpg)
+
+In order to have a working rig for actually moving the camera, I started from an existing set of models downloaded by Thingiverse which I planned to print using the Ultimaker 2.
+
+![Pan Tilt](../images/final/pantilt/pan_tilt.jpg)
+    
+Additionally, to test if the models were suitable for my HS-311 servo, I designed a model in OpenSCAD to match my motor specs. The model source is also available on [github](https://github.com/fibasile/HS-311-OpenSCAD).
+
+![Motor](../images/final/pantilt/motor.jpg)
+
+The actual 3D printing of these models was not straightforward. Due to some lower quality PLA material, the initial versions of the printed object where not suitable for use. The filament was not sticking well and also skipping significantly while extruded. The print itself required several hours so I was very disappointed by the result:
+
+![Bad Print](../images/final/pantilt/bad_print.jpg)
+    
+In order to achieve a better result, I tried printing again one of the parts with a different filament and raising the temperature to 230 degrees. This time the printed part looked far more solid, but unfortunately the printer stopped extruding at some point, resulting in the following:
+
+![Broken Print](../images/final/pantilt/broken_print.jpg)
+
+Finally I was able to produce the parts, achieving a better quality by slowing much the printing process to around 50% speed, and by rising temperature to 235 degrees. Most of the parts came out good enough for use, except one of the two bits holding the camera. In order not to monopolize the lab's printer I decided to put some tape to make parts stronger without printing them again.
+
+![Good Print](../images/final/pantilt/good_print.jpg)
+
+The assembled pan-tilt movement still needs few tweaks for being ready to be used for my project, but the initial result looks promising:
+
+<iframe width="640" height="360" style="width: 100%" src="//www.youtube.com/embed/lYbz5wtTXzw" frameborder="0" allowfullscreen></iframe>
+<br/>
+
 <span class="label">25 Feb 2014</span>
 <br/>
 I'm still working on completing the Servo control board, for which I had some trouble in finding the right components and soldering the connector pins.
